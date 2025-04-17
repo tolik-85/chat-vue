@@ -8,14 +8,24 @@ export default {
   components: { EnterForm, ChatHeader, ChatFlow, SendMsg, UsersList },
   data() {
     return {
-      userName: '',
+      currentUser: '',
+      users: [],
     }
+  },
+
+  methods: {
+    addNewUser(newUser) {
+      if (this.users.includes(newUser)) return
+
+      this.users.unshift(newUser)
+      this.currentUser = newUser
+    },
   },
 }
 </script>
 
 <template>
-  {{ userName }}
+  {{ currentUser }}
   <div class="main flex f_centered light">
     <div class="chat">
       <ChatHeader />
@@ -26,7 +36,7 @@ export default {
       </div>
       <SendMsg />
       <input type="checkbox" id="chk_sm" />
-      <EnterForm @userName="userName = $event" />
+      <EnterForm @currentUser="addNewUser($event)" />
     </div>
   </div>
 </template>

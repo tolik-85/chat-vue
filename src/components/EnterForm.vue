@@ -1,9 +1,9 @@
 <script>
 export default {
-  emits: ['userName'],
+  emits: ['currentUser'],
   data() {
     return {
-      userName: '',
+      currentUser: '',
     }
   },
 }
@@ -13,14 +13,14 @@ export default {
     <div class="wrap-enter-form">
       <label for="input_nickname">Ваш никнейм:</label>
       <input
-        v-model="userName"
+        v-model="currentUser"
         type="text"
         id="input_nickname"
         spellcheck="false"
         autocomplite="off"
         required
       />
-      <div @click="$emit('userName', userName)" class="wrap-enter-button">
+      <div @click="$emit('currentUser', currentUser)" class="wrap-enter-button">
         <label for="chk_sm" id="btn_enter">Войти в чат</label>
       </div>
       <div class="user-logged hide">
